@@ -8,3 +8,4 @@ class Solution(object):
         if str_x[::-1] == str_x:
             return True
         return False
+
