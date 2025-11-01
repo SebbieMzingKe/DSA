@@ -10,4 +10,4 @@ class Solution(object):
             temp = one
             one = two
             two = temp
-        return one
+        return one 

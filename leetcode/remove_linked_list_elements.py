@@ -28,6 +28,7 @@ class Solution(object):
                 prev = prev.next
         
         return dummy.next
+    
         # dummy = ListNode(next = head)
         # prev, current = dummy, head
 
