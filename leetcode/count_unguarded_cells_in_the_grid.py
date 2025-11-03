@@ -9,16 +9,30 @@ class Solution(object):
         """
 
         matrix = [[0] * n for _ in range(m)]
-        # 1 -> free 2 -> wall 3 -> guardable position 
+        # 0 -> free 1 -> wall 2 -> guardable position 3 -> guards
 
         for r, c in guards:
             matrix[r][c] = 1
         for r, c in walls:
             matrix[r][c] = 2
+
+        # moving up, down etc
+        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         
         # helper function to mark guarded cells
         def mark_guarded(r, c):
-            for row in range(r + 1, m):
-                if matrix[row][c] in [1, 2]:
-                    break
-                matrix[row][c] = 3
+            for dr, dc in directions:
+                # nr/c -> next row/column
+                nr, nc = r + dr, c + dc
+                Y
+                while 0 <= nr < m and 0 <= nc < n:
+                    if matrix[nr][nc] in [1, 2]: # if it hits guard or wall
+                        break
+                    matrix[nr][nc] = 3 # therefore mark it as guarded
+                    nr += dr
+                    nc += dc
+        
+        for r, c in guards:
+            mark_guarded(r, c)
+
+        return sum(cell == 0 for row in matrix for cell in row)
