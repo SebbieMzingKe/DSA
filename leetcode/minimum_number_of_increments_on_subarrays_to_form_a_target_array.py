@@ -6,7 +6,7 @@ class Solution(object):
         """
 
         operations = target[0]
-        for i in range(11, len(target)):
+        for i in range(1, len(target)):
             if target[i] > target[i-1]:
                 operations = target[i] - target[i-1]
         return operations
