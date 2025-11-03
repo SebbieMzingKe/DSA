@@ -24,7 +24,7 @@ class Solution(object):
             for dr, dc in directions:
                 # nr/c -> next row/column
                 nr, nc = r + dr, c + dc
-                Y
+                
                 while 0 <= nr < m and 0 <= nc < n:
                     if matrix[nr][nc] in [1, 2]: # if it hits guard or wall
                         break
