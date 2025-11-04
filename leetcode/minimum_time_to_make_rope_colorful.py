@@ -13,7 +13,7 @@ class Solution(object):
                 # remove balloon with smaller time
                 result += min(neededTime[i], neededTime[i - 1])
 
-                # keep maax index for next comparison
+                # keep max index for next comparison
                 neededTime[i] = max(neededTime[i], neededTime[i - 1])
 
         return result
