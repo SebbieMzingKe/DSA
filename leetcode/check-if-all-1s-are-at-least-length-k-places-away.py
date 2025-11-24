@@ -12,3 +12,4 @@ class Solution(object):
                 if i - prev_index - 1 < k:
                     return False
         return True
+        
