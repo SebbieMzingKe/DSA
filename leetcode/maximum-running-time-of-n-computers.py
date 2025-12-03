@@ -18,7 +18,7 @@ class Solution(object):
                     return True
             return total_time >= needed
         
-        # ssearch bounds 
+        # search bounds 
         low = 1
         high = sum(batteries) // n
 
