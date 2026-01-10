@@ -88,7 +88,6 @@ func runTest(testNum int, values []*int, expectedVal int) {
 	)
 }
 
-// -------- 5. Main --------
 func main() {
 	ptr := func(v int) *int { return &v }
 
