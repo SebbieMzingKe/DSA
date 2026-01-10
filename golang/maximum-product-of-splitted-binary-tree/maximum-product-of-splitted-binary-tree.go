@@ -81,7 +81,6 @@ func runTest(testNum int, values []*int, expected int) {
 		testNum, result, expected, status)
 }
 
-// -------- 5. Main --------
 func main() {
 	// Helper to create *int
 	ptr := func(v int) *int { return &v }
