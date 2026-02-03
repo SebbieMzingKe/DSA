@@ -5,21 +5,17 @@ from typing import Counter
 
 class Solution:
     def minimumCost(self, nums: List[int], k: int, dist: int) -> int:
-        # We need to choose k-1 elements from a sliding window of size dist+1
-        # starting from index 1.
+
         k -= 1
         n = len(nums)
 
-        # Lower heap (Max-heap using negatives) stores the smallest k elements
         lower = []
         lower_sum = 0
         lower_size = 0
 
-        # Upper heap (Min-heap) stores the rest
         upper = []
         upper_size = 0
 
-        # Map to track elements marked for removal (Lazy Deletion)
         out_counts = Counter()
 
         def clean_tops():
@@ -57,31 +53,21 @@ class Solution:
             upper_size -= 1
             return val
 
-        # 1. Initialize the first window: nums[1] to nums[dist+1]
-        # (Be careful not to go out of bounds if dist is large)
         window_end = min(n, dist + 2)
 
         for i in range(1, window_end):
             val = nums[i]
-            # Naive fill: push to upper, then balance
             push_upper(val)
 
-        # Balance heaps: Move smallest from Upper to Lower until Lower has k elements
         while lower_size < k and upper:
             push_lower(pop_upper())
 
         min_cost = lower_sum
 
-        # 2. Slide the window
-        # The window moves one step right. We remove nums[i - (dist+1)] and add nums[i]
-        # Start i at the element AFTER the initial window
         for i in range(window_end, n):
             in_val = nums[i]
             out_val = nums[i - (dist + 1)]
 
-            # --- Remove out_val ---
-            # Determine if out_val is in Lower or Upper
-            # We compare with the largest value in Lower
             clean_tops()
             max_lower = -lower[0]
 
@@ -95,7 +81,6 @@ class Solution:
                 upper_size -= 1
                 out_counts[out_val] += 1
 
-            # --- Add in_val ---
             clean_tops()
             # If lower is not empty and in_val is smaller than Lower's max, it belongs in Lower
             if lower and in_val < -lower[0]:
@@ -103,8 +88,6 @@ class Solution:
             else:
                 push_upper(in_val)
 
-            # --- Re-Balance ---
-            # Ensure Lower has exactly k elements
             while lower_size < k:
                 clean_tops()
                 push_lower(pop_upper())
