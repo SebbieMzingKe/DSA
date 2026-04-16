@@ -28,7 +28,7 @@ class Solution(object):
                         dp[i - k][j - 1] + dist
                     )
         
-        return dp[n][m]
+        return dp[n][m] 
 
 if __name__ == "__main__":
     solver = Solution()
