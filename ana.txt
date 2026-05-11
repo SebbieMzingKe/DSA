@@ -1,0 +1,12 @@
+class Solution(object):
+    def separateDigits(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        ans = []
+        for i in nums:
+            for j in str(i):
+                ans.append(int(j))
+        
+        return ans
